@@ -1,0 +1,61 @@
+<!doctype html>
+        <!-- https://www.nicesnippets.com/blog/how-to-display-data-from-mysql-database-in-a-table-using-node-js -->
+        <!-- https://www.webslesson.info/2022/04/insert-update-delete-data-from-mysql-in-node-js-using-express-js.html -->
+
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title></title>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="text-center mt-3 mb-3"><%= title %></h1>
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col">Stops</div>
+                        <div class="col">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <tr>
+                                <!-- Column Labels -->
+                                <th>Stop Label</th>
+                                <th>Stop ID</th>
+                            </tr>
+                            <%
+                                // Data is in a multi-dimensional array
+                                // the dats we care about is at index [0], loop over each row
+                                for(var i = 0; i< data[0].length; i++) {
+
+                                // check these out in the console
+                                console.log(data)  
+                                console.log(data[0].length)    
+                                console.log(data[0])   
+
+                                // Now we reference these for each column in the table
+                            %> 
+                            <tr>
+                                <td><%= data[0][i].label %></td>
+                                <td><%= data[0][i].stop_id %></td>
+                            </tr>
+                            <%
+                            };
+                            %>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
+</html>

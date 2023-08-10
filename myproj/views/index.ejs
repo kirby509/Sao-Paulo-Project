@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <title>Braz1lian Trip</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+ </head>
+
+ <body data = "">
+   <div class="container mt-4">
+     <div class="card">
+       <div class="card-body">
+         <h2>Please enter user details</h2>
+         <form action="create" method="POST">
+           <div class="form-group" style="background-color:aliceblue;padding:25px;">
+             <label for="email">Email Address</label>
+             <input type="text" class="form-control col-lg-9" id="email" aria-describedby="emailHelp" placeholder="Enter Email" name="email">
+             <label for="password">Password</label>
+             <input type="text" class="form-control col-lg-9" id="password" placeholder="Enter Password" name="password">                         
+           </div>
+           <button type="submit" class="btn btn-primary">Submit</button>
+         </form>
+        </div>
+      </div>
+    </div>         
+    <div class="container mt-4">
+      <div class="card">
+        <div class="card-body">     
+         <h2>Please enter new email</h2>
+         <form action="update" method="POST">
+           <div class="form-group" style="background-color:aliceblue;padding:25px;">
+             <label for="updateUserID">User ID</label>
+             <input type="number" class="form-control col-lg-9" id="updateUserID" placeholder="Enter User ID" name="updateUserID">
+             <label for="newemail">New Email</label>
+             <input type="text" class="form-control col-lg-9" id="newemail" placeholder="Enter New Email" name="newemail">
+           </div>
+           <button type="submit" class="btn btn-primary">Update</button>
+         </form>
+        </div>
+      </div>
+    </div>
+    <div class="container mt-4">
+      <div class="card">
+        <div class="card-body">          
+         <h2>Enter your user ID to be removed </h2>
+         <form action="delete" method="POST">
+           <div class="form-group"style="background-color:aliceblue;padding:25px;">
+             <label for="deleteUserID">User ID</label>
+             <input type="number" class="form-control col-lg-9" id="deleteUserID" placeholder="Enter User ID" name="deleteUserID">
+           </div>
+           <button type="submit" class="btn btn-primary">Remove</button>
+         </form>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-4">
+    <div class="card">
+      <div class="card-body">          
+        <h2>Find Stops </h2>
+        <form action="search" method="POST"> 
+          <div class="form-group"style="background-color:aliceblue;padding:25px;">
+           <label for="searchTerm">Search</label>
+           <input type="text" class="form-control col-lg-9" id="searchStop" placeholder="Search..." name="searchTerm">
+         </div>
+         <button type="submit" class="btn btn-primary">Search</button>
+       </form>
+      </div>
+     </div>  
+    </div> 
+<div class="container mt-4">
+   <div class="card">
+     <div class="card-body">          
+      <h2>Find Routes </h2>
+       <form action="lookup" method="POST">
+          <div class="form-group"style="background-color:aliceblue;padding:25px;">
+            <label for="routeType">Route Type</label>
+            <input type="number" class="form-control col-lg-9" id="term" placeholder="Enter Route Type" name="routeType">
+          </div>
+          <div class="form-group"style="background-color:aliceblue;padding:25px;">
+            <label for="stopId">Stop Id</label>
+            <input type="number" class="form-control col-lg-9" id="term" placeholder="Enter Stop Id" name="stopId">
+          </div>
+          <div class="form-group"style="background-color:aliceblue;padding:25px;">
+            <label for="tripDate">Trip Date</label>
+            <input type="datetime-local" class="form-control col-lg-9" id="term" placeholder="Enter Trip Date" name="tripDate">
+          </div>
+          <button type="submit" class="btn btn-primary">Lets Go!</button>
+         </form>
+       </div>
+     </div>
+   </div>
+   <div class="container mt-4">
+    <div class="card">
+      <div class="card-body">          
+       <h2>Get User Details </h2>
+        <form action="userdata" method="POST">
+           <div class="form-group"style="background-color:aliceblue;padding:25px;">
+             <label for="userName">User Name</label>
+             <input type="text" class="form-control col-lg-9" id="term" placeholder="Enter User Name" name="userName">
+           </div>
+           <button type="submit" class="btn btn-primary">Get My Details</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="container mt-4">
+      <div class="card">
+        <div class="card-body">          
+         <h2>Get Rewards </h2>
+          <form action="reward" method="POST">
+             <div class="form-group"style="background-color:aliceblue;padding:25px;">
+               <label for="userName">User Name</label>
+               <input type="text" class="form-control col-lg-9" id="term" placeholder="Enter User Name" name="userName">
+             </div>
+             <button type="submit" class="btn btn-primary">Get Rewards</button>
+            </form>
+          </div>
+        </div>
+      </div>
+ </body>
+</html>

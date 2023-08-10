@@ -1,0 +1,104 @@
+
+var express = require('express');
+var bodyParser = require('body-parser');
+var mysql = require('mysql2');
+var path = require('path');
+var connection = mysql.createConnection({
+                host: '34.66.230.77',
+                user: 'root',
+                password: 'dataBased',
+                database: 'brazilianTrip'
+});
+
+connection.connect(function(err) {
+  if (err) throw err;
+  console.log('Database is connected successfully !');
+});
+
+var app = express();
+
+// set up ejs view engine 
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+ 
+app.use(express.json());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(__dirname + '../public'));
+
+/* GET home page, respond by rendering index.ejs */
+app.get('/', function(req, res) {
+  res.render('index', { title: 'Home' });
+});
+
+app.get('/success', function(req, res) {
+  res.send({'message': 'Success!'});
+})
+ 
+//this code is executed when a user clicks the form submit button
+app.post('/create', function(req, res) {
+  console.log('Insert Command')
+  var email = req.body.email;
+  var password = req.body.password;
+  var sql = `INSERT INTO Riders (email, password) VALUES ('${email}','${password}')`;
+
+console.log(sql);
+  connection.query(sql, function(err, result) {
+    if (err) {
+      res.send(err)
+      return;
+    }
+    res.redirect('/success');
+  });
+});
+
+app.post('/update', function(req, res) {
+  console.log('Update Command')
+  var updateUserID = req.body.updateUserID;
+  var newemail = req.body.newemail;
+  var sqlupdate = `UPDATE Riders SET email = '${newemail}' WHERE user_id = ${updateUserID};`;
+
+console.log(sqlupdate);
+  connection.query(sqlupdate, function(err, result) {
+    if (err) {
+      res.send(err)
+      return;
+    }
+    res.redirect('/success');
+  });
+
+});
+
+app.post('/delete', function(req, res) {
+  console.log('Delete Command')
+  var deleteUserID = req.body.deleteUserID;
+  var sqldel = `DELETE FROM Riders WHERE user_id = ${deleteUserID}`;
+
+console.log(sqldel);
+  connection.query(sqldel, function(err, result) {
+    if (err) {
+      res.send(err)
+      return;
+    }
+    res.redirect('/success');
+  });
+
+});
+
+app.post('/search', function(req, res) {
+  console.log('Search Term')
+  var searchTerm = req.body.searchTerm;
+  
+  connection.query("call stopLookup(?)", searchTerm, function(err, result) {
+    if (err) {
+      res.send(err)
+      return;
+    }
+     console.log("results:", result);
+  });
+
+});
+
+app.listen(80, function () {
+    console.log('Node app is running on port 80');
+});
